@@ -1,3 +1,5 @@
 import { FC } from "react";
 
-export const ArticlePreview: FC = () => <article></article>;
+export const ArticlePreview: FC = () => {
+	return <article></article>;
+};
