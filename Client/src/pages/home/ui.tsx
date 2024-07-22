@@ -2,11 +2,13 @@ import { FC } from "react";
 
 import { ArticlePreview } from "@entities/articles/ui/article-preview";
 
+import { MainPage } from "./styles";
+
 export const HomePage: FC = () => {
 	return (
-		<section>
+		<MainPage>
+			<h1 className="visually-hidden">Article preview component</h1>
 			<ArticlePreview />
-			<h1>Test</h1>
-		</section>
+		</MainPage>
 	);
 };
