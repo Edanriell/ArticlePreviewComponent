@@ -1,3 +1,5 @@
+import "./styles/styles.less";
+
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 
