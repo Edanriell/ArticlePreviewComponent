@@ -38,7 +38,6 @@ export const ArticlePreview: FC = () => {
 					/>
 				</picture>
 			</ArticlePreviewCardImageWrapper>
-
 			<ArticlePreviewCardContent>
 				<ArticlePreviewCardTitle>
 					Shift the overall look and feel by adding these wonderful touches to furniture in your

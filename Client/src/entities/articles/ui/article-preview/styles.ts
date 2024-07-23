@@ -7,6 +7,14 @@ export const ArticlePreviewCard = styled.article`
 	max-width: 32.7rem;
 	margin: 2.4rem;
 	overflow: hidden;
+
+	@media (width >= 768px) {
+		display: grid;
+		grid-template-columns: 28.5rem 1fr;
+		grid-template-rows: repeat(2, auto);
+		column-gap: 4rem;
+		max-width: 73rem; // unset when finished
+	}
 `;
 
 export const ArticlePreviewCardImageWrapper = styled.div`
@@ -16,6 +24,14 @@ export const ArticlePreviewCardImageWrapper = styled.div`
 	position: relative;
 	overflow: hidden;
 	background-color: var(--rainmaker);
+
+	@media (width >= 768px) {
+		grid-column: 1 / 2;
+		grid-row: 1 / -1;
+		min-height: 28rem;
+		max-height: 28rem;
+		position: relative;
+	}
 `;
 
 export const ArticlePreviewCardImage = styled.img`
@@ -28,10 +44,25 @@ export const ArticlePreviewCardImage = styled.img`
 		height: 100%;
 		margin-top: -24.4rem;
 	}
+
+	@media (width >= 768px) {
+		width: 35rem;
+		height: 52.4rem;
+		margin-top: 0;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
 `;
 
 export const ArticlePreviewCardContent = styled.div`
 	padding: 3.6rem 3.2rem 3.2rem 3.2rem;
+
+	@media (width >= 768px) {
+		grid-column: 2 / 3;
+		grid-row: 1 / 2;
+		padding: 3.2rem 4rem 2rem 0;
+	}
 `;
 
 export const ArticlePreviewCardTitle = styled.h2`
@@ -43,6 +74,11 @@ export const ArticlePreviewCardTitle = styled.h2`
 	color: var(--rainmaker);
 	margin: 0 0 1.2rem 0;
 	text-align: left;
+
+	@media (width >= 768px) {
+		font-size: 2rem;
+		line-height: 140%;
+	}
 `;
 
 export const ArticlePreviewCardDescription = styled.p`
@@ -62,6 +98,12 @@ export const ArticlePreviewCardFooter = styled.footer`
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+
+	@media (width >= 768px) {
+		grid-column: 2 / 3;
+		grid-row: 2 / 3;
+		padding: 0 4rem 3.2rem 0;
+	}
 `;
 
 export const ArticlePreviewCardAuthorContent = styled.div`
