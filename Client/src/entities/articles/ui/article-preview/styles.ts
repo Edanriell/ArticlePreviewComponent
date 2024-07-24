@@ -1,6 +1,9 @@
 import { styled } from "styled-components";
 
 export const ArticlePreviewCard = styled.article`
+	display: grid;
+	grid-template-rows: 20rem repeat(2, auto);
+	grid-template-columns: auto;
 	border-radius: 1rem;
 	box-shadow: 0 4rem 4rem -1rem rgba(201, 213, 225, 0.5);
 	background: var(--white);
@@ -9,54 +12,48 @@ export const ArticlePreviewCard = styled.article`
 	overflow: hidden;
 
 	@media (width >= 768px) {
-		display: grid;
 		grid-template-columns: 28.5rem 1fr;
 		grid-template-rows: repeat(2, auto);
 		column-gap: 4rem;
-		max-width: 73rem; // unset when finished
+		max-width: 73rem;
 	}
 `;
 
 export const ArticlePreviewCardImageWrapper = styled.div`
 	width: 100%;
-	min-height: 20rem;
-	max-height: 20rem;
 	position: relative;
 	overflow: hidden;
 	background-color: var(--rainmaker);
+	grid-column: 1 / -1;
+	grid-row: 1 / 2;
 
 	@media (width >= 768px) {
 		grid-column: 1 / 2;
 		grid-row: 1 / -1;
-		min-height: 28rem;
-		max-height: 28rem;
-		position: relative;
+		min-height: 100%;
+		max-height: 100%;
 	}
 `;
 
 export const ArticlePreviewCardImage = styled.img`
 	width: 100%;
-	height: 20rem;
+	height: 49rem;
 	object-fit: cover;
-	margin-top: 0;
-
-	@media (width >= 375px) {
-		height: 100%;
-		margin-top: -24.4rem;
-	}
+	position: absolute;
+	bottom: -4.6rem;
+	left: 0;
 
 	@media (width >= 768px) {
-		width: 35rem;
+		width: inherit;
 		height: 52.4rem;
-		margin-top: 0;
-		position: absolute;
 		bottom: 0;
-		left: 0;
 	}
 `;
 
 export const ArticlePreviewCardContent = styled.div`
 	padding: 3.6rem 3.2rem 3.2rem 3.2rem;
+	grid-column: 1 / -1;
+	grid-row: 2 / 3;
 
 	@media (width >= 768px) {
 		grid-column: 2 / 3;
@@ -98,6 +95,8 @@ export const ArticlePreviewCardFooter = styled.footer`
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+	grid-column: 1 / -1;
+	grid-row: 3 / 4;
 
 	@media (width >= 768px) {
 		grid-column: 2 / 3;
