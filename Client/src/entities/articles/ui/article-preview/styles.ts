@@ -10,6 +10,7 @@ export const ArticlePreviewCard = styled.article`
 	max-width: 32.7rem;
 	margin: 2.4rem;
 	overflow: hidden;
+	position: relative;
 
 	@media (width >= 768px) {
 		grid-template-columns: 28.5rem 1fr;
@@ -141,24 +142,4 @@ export const ArticlePreviewCardPostDate = styled.time`
 	line-height: 154%;
 	letter-spacing: 0.01em;
 	color: var(--sterling-silver);
-`;
-
-export const ArticlePreviewCardShareButton = styled.button`
-	width: 3.2rem;
-	height: 3.2rem;
-	border-radius: 100%;
-	background-color: var(--aircraft-white);
-	cursor: pointer;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	border: none;
-	padding: 0;
-`;
-
-export const ArticlePreviewCardShareButtonIcon = styled.svg`
-	width: 1.5rem;
-	height: 1.3rem;
-	color: var(--infinity-and-beyond);
 `;
