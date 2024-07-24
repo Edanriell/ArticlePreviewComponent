@@ -143,25 +143,3 @@ export const ArticlePreviewCardPostDate = styled.time`
 	letter-spacing: 0.01em;
 	color: var(--sterling-silver);
 `;
-
-export const ArticlePreviewCardShareButton = styled.button`
-	width: 3.2rem;
-	height: 3.2rem;
-	border-radius: 100%;
-	background-color: var(--aircraft-white);
-	cursor: pointer;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	border: none;
-	padding: 0;
-	position: relative;
-	z-index: 3;
-`;
-
-export const ArticlePreviewCardShareButtonIcon = styled.svg`
-	width: 1.5rem;
-	height: 1.3rem;
-	color: var(--infinity-and-beyond);
-`;
