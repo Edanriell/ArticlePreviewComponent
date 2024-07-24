@@ -10,6 +10,7 @@ export const ArticlePreviewCard = styled.article`
 	max-width: 32.7rem;
 	margin: 2.4rem;
 	overflow: hidden;
+	position: relative;
 
 	@media (width >= 768px) {
 		grid-template-columns: 28.5rem 1fr;
@@ -155,6 +156,8 @@ export const ArticlePreviewCardShareButton = styled.button`
 	justify-content: center;
 	border: none;
 	padding: 0;
+	position: relative;
+	z-index: 3;
 `;
 
 export const ArticlePreviewCardShareButtonIcon = styled.svg`
