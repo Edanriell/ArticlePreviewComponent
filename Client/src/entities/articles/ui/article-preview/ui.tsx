@@ -26,6 +26,12 @@ export const ArticlePreview: FC = () => {
 		setIsTooltipDisplayed(!isTooltipDisplayed);
 	};
 
+	// TODO
+	// Custom hook for screen
+	// Put tooltip in button
+	// Change relative when different screen size
+	// TODO
+
 	return (
 		<ArticlePreviewCard>
 			<ArticlePreviewCardImageWrapper>
@@ -86,18 +92,18 @@ export const ArticlePreview: FC = () => {
 						isTooltipDisplayed ? { backgroundColor: "#6e8098" } : { backgroundColor: "#ecf2f8" }
 					}
 					whileHover={{
-						scale: 1.05
+						scale: 1.15
 					}}
-					whileTap={{ scale: 0.95 }}
+					whileTap={{ scale: 0.9 }}
 					onClick={handleShareButtonClick}
 					className="share-button"
 				>
 					<motion.svg
 						animate={isTooltipDisplayed ? { color: "#ffffff" } : { color: "#6e8098" }}
 						whileHover={{
-							scale: 1.05
+							scale: 1.15
 						}}
-						whileTap={{ scale: 0.95 }}
+						whileTap={{ scale: 0.9 }}
 						className="share-button__icon"
 						width="15"
 						height="13"
@@ -116,15 +122,32 @@ export const ArticlePreview: FC = () => {
 			<AnimatePresence>
 				{isTooltipDisplayed && (
 					<motion.div
-						initial={{ translateY: "100%", opacity: 1, filter: "blur(5px)" }}
-						animate={{ translateY: "0%", opacity: 1, filter: "blur(0px)" }}
-						exit={{ translateY: "100%", opacity: 1, filter: "blur(5px)" }}
+						initial={{ translateY: "100%", opacity: 1 }}
+						animate={{ translateY: "0%", opacity: 1 }}
+						exit={{ translateY: "100%", opacity: 1 }}
 						transition={{ ease: "easeInOut", duration: 0.25 }}
 						className="tooltip"
 					>
-						<p className="tooltip__text">Share</p>
-						<ul className="tooltip__social-icons-list social-icons-list">
-							<li>
+						<motion.p
+							initial={{ filter: "blur(2.5px)" }}
+							animate={isTooltipDisplayed ? { filter: "blur(0px)" } : { filter: "blur(2.5px)" }}
+							transition={{ ease: "easeInOut", duration: 0.25 }}
+							className="tooltip__text"
+						>
+							Share
+						</motion.p>
+						<motion.ul
+							initial={{ filter: "blur(2.5px)" }}
+							animate={isTooltipDisplayed ? { filter: "blur(0px)" } : { filter: "blur(2.5px)" }}
+							transition={{ ease: "easeInOut", duration: 0.25 }}
+							className="tooltip__social-icons-list social-icons-list"
+						>
+							<motion.li
+								whileHover={{
+									scale: 1.15
+								}}
+								whileTap={{ scale: 0.9 }}
+							>
 								<a href="#" target="_blank">
 									<span className="visually-hidden">Share post in Facebook</span>
 									<svg
@@ -140,8 +163,13 @@ export const ArticlePreview: FC = () => {
 										/>
 									</svg>
 								</a>
-							</li>
-							<li>
+							</motion.li>
+							<motion.li
+								whileHover={{
+									scale: 1.15
+								}}
+								whileTap={{ scale: 0.9 }}
+							>
 								<a href="#" target="_blank">
 									<span className="visually-hidden">Share post in Twitter</span>
 									<svg
@@ -157,8 +185,13 @@ export const ArticlePreview: FC = () => {
 										/>
 									</svg>
 								</a>
-							</li>
-							<li>
+							</motion.li>
+							<motion.li
+								whileHover={{
+									scale: 1.15
+								}}
+								whileTap={{ scale: 0.9 }}
+							>
 								<a href="#" target="_blank">
 									<span className="visually-hidden">Share post in Pinterest</span>
 									<svg
@@ -174,8 +207,8 @@ export const ArticlePreview: FC = () => {
 										/>
 									</svg>
 								</a>
-							</li>
-						</ul>
+							</motion.li>
+						</motion.ul>
 					</motion.div>
 				)}
 			</AnimatePresence>
