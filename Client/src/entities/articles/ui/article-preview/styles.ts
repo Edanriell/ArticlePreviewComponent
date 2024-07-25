@@ -9,14 +9,15 @@ export const ArticlePreviewCard = styled.article`
 	background: var(--white);
 	max-width: 32.7rem;
 	margin: 2.4rem;
-	overflow: hidden;
 	position: relative;
+	overflow: hidden;
 
 	@media (width >= 768px) {
 		grid-template-columns: 28.5rem 1fr;
 		grid-template-rows: repeat(2, auto);
 		column-gap: 4rem;
 		max-width: 73rem;
+		overflow: visible;
 	}
 `;
 
@@ -27,12 +28,14 @@ export const ArticlePreviewCardImageWrapper = styled.div`
 	background-color: var(--rainmaker);
 	grid-column: 1 / -1;
 	grid-row: 1 / 2;
+	border-radius: 1rem 1rem 0 0;
 
 	@media (width >= 768px) {
 		grid-column: 1 / 2;
 		grid-row: 1 / -1;
 		min-height: 100%;
 		max-height: 100%;
+		border-radius: 1rem 0 0 1rem;
 	}
 `;
 
@@ -98,11 +101,13 @@ export const ArticlePreviewCardFooter = styled.footer`
 	justify-content: space-between;
 	grid-column: 1 / -1;
 	grid-row: 3 / 4;
+	overflow: hidden;
 
 	@media (width >= 768px) {
 		grid-column: 2 / 3;
 		grid-row: 2 / 3;
 		padding: 0 4rem 3.2rem 0;
+		overflow: visible;
 	}
 `;
 
