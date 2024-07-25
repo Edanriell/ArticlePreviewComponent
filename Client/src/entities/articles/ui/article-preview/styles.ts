@@ -12,7 +12,7 @@ export const ArticlePreviewCard = styled.article`
 	position: relative;
 	overflow: hidden;
 
-	@media (width >= 768px) {
+	@media (width >= 900px) {
 		grid-template-columns: 28.5rem 1fr;
 		grid-template-rows: repeat(2, auto);
 		column-gap: 4rem;
@@ -30,7 +30,7 @@ export const ArticlePreviewCardImageWrapper = styled.div`
 	grid-row: 1 / 2;
 	border-radius: 1rem 1rem 0 0;
 
-	@media (width >= 768px) {
+	@media (width >= 900px) {
 		grid-column: 1 / 2;
 		grid-row: 1 / -1;
 		min-height: 100%;
@@ -47,7 +47,7 @@ export const ArticlePreviewCardImage = styled.img`
 	bottom: -4.6rem;
 	left: 0;
 
-	@media (width >= 768px) {
+	@media (width >= 900px) {
 		width: inherit;
 		height: 52.4rem;
 		bottom: 0;
@@ -59,7 +59,7 @@ export const ArticlePreviewCardContent = styled.div`
 	grid-column: 1 / -1;
 	grid-row: 2 / 3;
 
-	@media (width >= 768px) {
+	@media (width >= 900px) {
 		grid-column: 2 / 3;
 		grid-row: 1 / 2;
 		padding: 3.2rem 4rem 2rem 0;
@@ -76,7 +76,7 @@ export const ArticlePreviewCardTitle = styled.h2`
 	margin: 0 0 1.2rem 0;
 	text-align: left;
 
-	@media (width >= 768px) {
+	@media (width >= 900px) {
 		font-size: 2rem;
 		line-height: 140%;
 	}
@@ -103,7 +103,7 @@ export const ArticlePreviewCardFooter = styled.footer`
 	grid-row: 3 / 4;
 	overflow: hidden;
 
-	@media (width >= 768px) {
+	@media (width >= 900px) {
 		grid-column: 2 / 3;
 		grid-row: 2 / 3;
 		padding: 0 4rem 3.2rem 0;

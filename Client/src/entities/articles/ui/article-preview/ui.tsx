@@ -33,22 +33,17 @@ export const ArticlePreview: FC = () => {
 		}
 	};
 
-	// TODO
-	// footer Overflow
-	// fix animation on small screen size min 900px
-	// TODO
-
 	const tooltipAnimationVariants = {
 		initial: {
-			translateY: screenSize.width && screenSize?.width >= 768 ? "14px" : "100%",
+			translateY: screenSize.width && screenSize?.width >= 900 ? "14px" : "100%",
 			opacity: 0
 		},
 		displayed: {
-			translateY: screenSize.width && screenSize?.width >= 768 ? "0px" : "0%",
+			translateY: screenSize.width && screenSize?.width >= 900 ? "0px" : "0%",
 			opacity: 1
 		},
 		hidden: {
-			translateY: screenSize.width && screenSize?.width >= 768 ? "14px" : "100%",
+			translateY: screenSize.width && screenSize?.width >= 900 ? "14px" : "100%",
 			opacity: 0
 		}
 	};
