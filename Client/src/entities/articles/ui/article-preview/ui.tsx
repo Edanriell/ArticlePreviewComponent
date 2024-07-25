@@ -41,9 +41,9 @@ export const ArticlePreview: FC = () => {
 	}, [isTooltipDisplayed]);
 
 	const tooltipAnimationVariants = {
-		initial: { translateY: "100%", opacity: 1 },
+		initial: { translateY: "100%", opacity: 0 },
 		displayed: { translateY: "0%", opacity: 1 },
-		hidden: { translateY: "100%", opacity: 1 }
+		hidden: { translateY: "100%", opacity: 0 }
 	};
 
 	const tooltipContentAnimationVariants = {
