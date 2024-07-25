@@ -10,14 +10,12 @@ export const ArticlePreviewCard = styled.article`
 	max-width: 32.7rem;
 	margin: 2.4rem;
 	position: relative;
-	overflow: hidden;
 
 	@media (width >= 900px) {
 		grid-template-columns: 28.5rem 1fr;
 		grid-template-rows: repeat(2, auto);
 		column-gap: 4rem;
 		max-width: 73rem;
-		overflow: visible;
 	}
 `;
 
@@ -55,7 +53,7 @@ export const ArticlePreviewCardImage = styled.img`
 `;
 
 export const ArticlePreviewCardContent = styled.div`
-	padding: 3.6rem 3.2rem 3.2rem 3.2rem;
+	padding: 3.6rem 3.2rem 0.8rem 3.2rem;
 	grid-column: 1 / -1;
 	grid-row: 2 / 3;
 
@@ -94,7 +92,7 @@ export const ArticlePreviewCardDescription = styled.p`
 `;
 
 export const ArticlePreviewCardFooter = styled.footer`
-	padding: 0 3.2rem 2rem 3.2rem;
+	padding: 2.4rem 3.2rem 2rem 3.2rem;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -102,6 +100,7 @@ export const ArticlePreviewCardFooter = styled.footer`
 	grid-column: 1 / -1;
 	grid-row: 3 / 4;
 	overflow: hidden;
+	position: relative;
 
 	@media (width >= 900px) {
 		grid-column: 2 / 3;
