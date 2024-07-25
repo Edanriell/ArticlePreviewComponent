@@ -1,8 +1,9 @@
 import "./styles.less";
 
-import { FC, useEffect, useState } from "react";
-
+import { FC, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+
+import { useWindowSize } from "@shared/lib/hooks";
 
 import {
 	ArticlePreviewCard,
@@ -20,7 +21,9 @@ import {
 } from "./styles.ts";
 
 export const ArticlePreview: FC = () => {
-	const [isTooltipDisplayed, setIsTooltipDisplayed] = useState<string>("hidden");
+	const [isTooltipDisplayed, setIsTooltipDisplayed] = useState<"hidden" | "displayed">("hidden");
+
+	const screenSize = useWindowSize();
 
 	const handleShareButtonClick = () => {
 		if (isTooltipDisplayed === "hidden") {
@@ -31,19 +34,23 @@ export const ArticlePreview: FC = () => {
 	};
 
 	// TODO
-	// Custom hook for screen
-	// Put tooltip in button
-	// Change relative when different screen size
+	// footer Overflow
+	// fix animation on small screen size min 900px
 	// TODO
 
-	useEffect(() => {
-		console.log(isTooltipDisplayed);
-	}, [isTooltipDisplayed]);
-
 	const tooltipAnimationVariants = {
-		initial: { translateY: "100%", opacity: 0 },
-		displayed: { translateY: "0%", opacity: 1 },
-		hidden: { translateY: "100%", opacity: 0 }
+		initial: {
+			translateY: screenSize.width && screenSize?.width >= 768 ? "14px" : "100%",
+			opacity: 0
+		},
+		displayed: {
+			translateY: screenSize.width && screenSize?.width >= 768 ? "0px" : "0%",
+			opacity: 1
+		},
+		hidden: {
+			translateY: screenSize.width && screenSize?.width >= 768 ? "14px" : "100%",
+			opacity: 0
+		}
 	};
 
 	const tooltipContentAnimationVariants = {
