@@ -4,6 +4,7 @@ import { FC, useState } from "react";
 import { motion } from "framer-motion";
 
 import { Tooltip } from "@shared/ui/tooltip";
+import { formatDate } from "@shared/lib/functions";
 
 import {
 	ArticlePreviewCard,
@@ -20,7 +21,44 @@ import {
 	ArticlePreviewCardTitle
 } from "./styles.ts";
 
-export const ArticlePreview: FC = () => {
+type ArticlePreviewProps = {
+	title: string;
+	description: string;
+	image: {
+		small?: string;
+		medium?: string;
+		large?: string;
+		smallWebp?: string;
+		mediumWebp?: string;
+		largeWebp?: string;
+	};
+	author: {
+		fullName: string;
+		image: {
+			small?: string;
+			medium?: string;
+			large?: string;
+			smallWebp?: string;
+			mediumWebp?: string;
+			largeWebp?: string;
+		};
+	};
+	date: Date;
+	shareLinks: {
+		facebook: string;
+		twitter: string;
+		pinterest: string;
+	};
+};
+
+export const ArticlePreview: FC<ArticlePreviewProps> = ({
+	title,
+	description,
+	image,
+	author,
+	date,
+	shareLinks
+}) => {
 	const [isTooltipDisplayed, setIsTooltipDisplayed] = useState<"hidden" | "displayed">("hidden");
 
 	const handleShareButtonClick = () => {
@@ -45,54 +83,33 @@ export const ArticlePreview: FC = () => {
 		<ArticlePreviewCard>
 			<ArticlePreviewCardImageWrapper>
 				<picture>
-					<source
-						srcSet="/images/raster/articles/article-preview-image.webp"
-						media="(min-width: 375px)"
-						type="image/webp"
-					/>
-					<source
-						srcSet="/images/raster/articles/article-preview-image.jpg"
-						media="(min-width: 375px)"
-						type="image/jpg"
-					/>
-					<ArticlePreviewCardImage
-						src="/images/raster/articles/article-preview-image.jpg"
-						alt="Modern furniture"
-					/>
+					<source srcSet={image?.smallWebp} media="(min-width: 375px)" type="image/webp" />
+					<source srcSet={image?.small} media="(min-width: 375px)" type="image/jpg" />
+					<ArticlePreviewCardImage src={image?.small} alt="Modern furniture" />
 				</picture>
 			</ArticlePreviewCardImageWrapper>
 			<ArticlePreviewCardContent>
-				<ArticlePreviewCardTitle>
-					Shift the overall look and feel by adding these wonderful touches to furniture in your
-					home
-				</ArticlePreviewCardTitle>
-				<ArticlePreviewCardDescription>
-					Ever been in a room and felt like something was missing? Perhaps it felt slightly bare and
-					uninviting. I’ve got some simple tips to help you make any room feel complete.
-				</ArticlePreviewCardDescription>
+				<ArticlePreviewCardTitle>{title}</ArticlePreviewCardTitle>
+				<ArticlePreviewCardDescription>{description}</ArticlePreviewCardDescription>
 			</ArticlePreviewCardContent>
 			<ArticlePreviewCardFooter>
 				<ArticlePreviewCardAuthorContent>
 					<picture>
 						<source
-							srcSet="/images/raster/users/user-michelle-appleton-image.webp"
+							srcSet={author?.image?.smallWebp}
 							media="(min-width: 375px)"
 							type="image/webp"
 						/>
-						<source
-							srcSet="/images/raster/users/user-michelle-appleton-image.jpg"
-							media="(min-width: 375px)"
-							type="image/jpg"
-						/>
+						<source srcSet={author?.image?.small} media="(min-width: 375px)" type="image/jpg" />
 						<ArticlePreviewCardAuthorImage
-							src="/images/raster/users/user-michelle-appleton-image.jpg"
-							alt="Headshot of Michelle Appleton"
+							src={author?.image?.small}
+							alt={"Headshot of " + author.fullName}
 						/>
 					</picture>
 					<ArticlePreviewCardAuthorContentWrapper>
-						<ArticlePreviewCardAuthorFullName>Michelle Appleton</ArticlePreviewCardAuthorFullName>
-						<ArticlePreviewCardPostDate dateTime="2020-06-28T20:00">
-							28 Jun 2020
+						<ArticlePreviewCardAuthorFullName>{author.fullName}</ArticlePreviewCardAuthorFullName>
+						<ArticlePreviewCardPostDate dateTime={date.toLocaleString()}>
+							{formatDate(date)}
 						</ArticlePreviewCardPostDate>
 					</ArticlePreviewCardAuthorContentWrapper>
 				</ArticlePreviewCardAuthorContent>
@@ -134,7 +151,7 @@ export const ArticlePreview: FC = () => {
 						</motion.svg>
 						<span className="visually-hidden">Share article</span>
 					</motion.button>
-					<Tooltip isTooltipDisplayed={isTooltipDisplayed} />
+					<Tooltip shareLinksData={shareLinks} isTooltipDisplayed={isTooltipDisplayed} />
 				</div>
 			</ArticlePreviewCardFooter>
 		</ArticlePreviewCard>

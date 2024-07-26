@@ -1,3 +1,5 @@
+import "./styles.less";
+
 import { FC } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -5,10 +7,15 @@ import { Icon, IconType } from "@shared/ui/icon";
 import { useWindowSize } from "@shared/lib/hooks";
 
 type TooltipProps = {
+	shareLinksData: {
+		facebook: string;
+		twitter: string;
+		pinterest: string;
+	};
 	isTooltipDisplayed: "hidden" | "displayed";
 };
 
-export const Tooltip: FC<TooltipProps> = ({ isTooltipDisplayed }) => {
+export const Tooltip: FC<TooltipProps> = ({ isTooltipDisplayed, shareLinksData }) => {
 	const screenSize = useWindowSize();
 
 	const tooltipAnimationVariants = {
@@ -66,7 +73,7 @@ export const Tooltip: FC<TooltipProps> = ({ isTooltipDisplayed }) => {
 							}}
 							whileTap={{ scale: 0.9 }}
 						>
-							<a href="#" target="_blank">
+							<a href={shareLinksData.facebook} target="_blank">
 								<span className="visually-hidden">Share post in Facebook</span>
 								<Icon iconType={IconType.Facebook} />
 							</a>
@@ -77,7 +84,7 @@ export const Tooltip: FC<TooltipProps> = ({ isTooltipDisplayed }) => {
 							}}
 							whileTap={{ scale: 0.9 }}
 						>
-							<a href="#" target="_blank">
+							<a href={shareLinksData.twitter} target="_blank">
 								<span className="visually-hidden">Share post in Twitter</span>
 								<Icon iconType={IconType.Twitter} />
 							</a>
@@ -88,7 +95,7 @@ export const Tooltip: FC<TooltipProps> = ({ isTooltipDisplayed }) => {
 							}}
 							whileTap={{ scale: 0.9 }}
 						>
-							<a href="#" target="_blank">
+							<a href={shareLinksData.pinterest} target="_blank">
 								<span className="visually-hidden">Share post in Pinterest</span>
 								<Icon iconType={IconType.Pinterest} />
 							</a>
