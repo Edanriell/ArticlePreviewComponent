@@ -1,10 +1,9 @@
 import "./styles.less";
 
 import { FC, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
-import { Icon, IconType } from "@shared/ui/icon";
-import { useWindowSize } from "@shared/lib/hooks";
+import { Tooltip } from "@shared/ui/tooltip";
 
 import {
 	ArticlePreviewCard,
@@ -24,8 +23,6 @@ import {
 export const ArticlePreview: FC = () => {
 	const [isTooltipDisplayed, setIsTooltipDisplayed] = useState<"hidden" | "displayed">("hidden");
 
-	const screenSize = useWindowSize();
-
 	const handleShareButtonClick = () => {
 		if (isTooltipDisplayed === "hidden") {
 			setIsTooltipDisplayed("displayed");
@@ -34,33 +31,12 @@ export const ArticlePreview: FC = () => {
 		}
 	};
 
-	const tooltipAnimationVariants = {
-		initial: {
-			translateY: screenSize.width && screenSize?.width >= 900 ? "14px" : "100%",
-			opacity: 0
-		},
-		displayed: {
-			translateY: screenSize.width && screenSize?.width >= 900 ? "0px" : "0%",
-			opacity: 1
-		},
-		hidden: {
-			translateY: screenSize.width && screenSize?.width >= 900 ? "14px" : "100%",
-			opacity: 0
-		}
-	};
-
-	const tooltipContentAnimationVariants = {
-		initial: { filter: "blur(2.5px)" },
-		displayed: { filter: "blur(0px)" },
-		hidden: { filter: "blur(2.5px)" }
-	};
-
-	const tooltipTriggerAnimationVariants = {
+	const shareButtonAnimationVariants = {
 		active: { backgroundColor: "#6e8098" },
 		inActive: { backgroundColor: "#ecf2f8" }
 	};
 
-	const tooltipTriggerIconAnimationVariants = {
+	const shareButtonIconAnimationVariants = {
 		active: { color: "#ffffff" },
 		inActive: { color: "#6e8098" }
 	};
@@ -130,7 +106,7 @@ export const ArticlePreview: FC = () => {
 							scale: 1.15
 						}}
 						whileTap={{ scale: 0.9 }}
-						variants={tooltipTriggerAnimationVariants}
+						variants={shareButtonAnimationVariants}
 						onClick={handleShareButtonClick}
 						className="share-button"
 					>
@@ -143,7 +119,7 @@ export const ArticlePreview: FC = () => {
 								scale: 1.15
 							}}
 							whileTap={{ scale: 0.9 }}
-							variants={tooltipTriggerIconAnimationVariants}
+							variants={shareButtonIconAnimationVariants}
 							className="share-button__icon"
 							width="15"
 							height="13"
@@ -158,71 +134,7 @@ export const ArticlePreview: FC = () => {
 						</motion.svg>
 						<span className="visually-hidden">Share article</span>
 					</motion.button>
-					<AnimatePresence>
-						{isTooltipDisplayed === "displayed" && (
-							<motion.div
-								initial="initial"
-								animate={isTooltipDisplayed === "displayed" && "displayed"}
-								exit="hidden"
-								variants={tooltipAnimationVariants}
-								transition={{ ease: "easeInOut", duration: 0.25 }}
-								className="tooltip"
-							>
-								<motion.p
-									initial="initial"
-									animate={isTooltipDisplayed === "displayed" && "displayed"}
-									exit="hidden"
-									variants={tooltipContentAnimationVariants}
-									transition={{ ease: "easeInOut", duration: 0.25 }}
-									className="tooltip__text"
-								>
-									Share
-								</motion.p>
-								<motion.ul
-									initial="initial"
-									animate={isTooltipDisplayed === "displayed" && "displayed"}
-									exit="hidden"
-									variants={tooltipContentAnimationVariants}
-									transition={{ ease: "easeInOut", duration: 0.25 }}
-									className="tooltip__social-icons-list social-icons-list"
-								>
-									<motion.li
-										whileHover={{
-											scale: 1.15
-										}}
-										whileTap={{ scale: 0.9 }}
-									>
-										<a href="#" target="_blank">
-											<span className="visually-hidden">Share post in Facebook</span>
-											<Icon iconType={IconType.Facebook} />
-										</a>
-									</motion.li>
-									<motion.li
-										whileHover={{
-											scale: 1.15
-										}}
-										whileTap={{ scale: 0.9 }}
-									>
-										<a href="#" target="_blank">
-											<span className="visually-hidden">Share post in Twitter</span>
-											<Icon iconType={IconType.Twitter} />
-										</a>
-									</motion.li>
-									<motion.li
-										whileHover={{
-											scale: 1.15
-										}}
-										whileTap={{ scale: 0.9 }}
-									>
-										<a href="#" target="_blank">
-											<span className="visually-hidden">Share post in Pinterest</span>
-											<Icon iconType={IconType.Pinterest} />
-										</a>
-									</motion.li>
-								</motion.ul>
-							</motion.div>
-						)}
-					</AnimatePresence>
+					<Tooltip isTooltipDisplayed={isTooltipDisplayed} />
 				</div>
 			</ArticlePreviewCardFooter>
 		</ArticlePreviewCard>
