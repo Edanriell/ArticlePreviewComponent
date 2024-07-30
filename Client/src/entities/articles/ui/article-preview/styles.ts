@@ -10,8 +10,10 @@ export const ArticlePreviewCard = styled.article`
 	max-width: 32.7rem;
 	margin: 2.4rem;
 	position: relative;
+	overflow: hidden;
 
 	@media (width >= 900px) {
+		overflow: unset;
 		grid-template-columns: 28.5rem 1fr;
 		grid-template-rows: repeat(2, auto);
 		column-gap: 4rem;
